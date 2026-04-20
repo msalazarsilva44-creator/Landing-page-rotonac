@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rotonac - Engineering Excellence in Fluid Storage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2f3131",
+                        "tertiary-fixed-dim": "#ffb3ac",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#af2900",
+                        "primary-fixed-dim": "#ffb4a2",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e8e8e8",
+                        "on-secondary-fixed": "#002022",
+                        "on-secondary-fixed-variant": "#004f54",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#410003",
+                        "background": "#f9f9f9",
+                        "on-tertiary-container": "#fffbff",
+                        "on-surface": "#1a1c1c",
+                        "primary-container": "#d63c10",
+                        "surface-bright": "#f9f9f9",
+                        "surface-variant": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#930010",
+                        "surface-container": "#edeeed",
+                        "tertiary": "#b6171e",
+                        "secondary-container": "#96f1fa",
+                        "on-primary-container": "#fffbff",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#e4beb5",
+                        "secondary-fixed": "#96f1fa",
+                        "outline": "#8f7068",
+                        "secondary-fixed-dim": "#7ad5dd",
+                        "on-secondary-container": "#006f77",
+                        "surface-container-low": "#f3f4f3",
+                        "primary-fixed": "#ffdbd2",
+                        "tertiary-fixed": "#ffdad6",
+                        "inverse-on-surface": "#f0f1f0",
+                        "on-surface-variant": "#5b403a",
+                        "secondary": "#006970",
+                        "on-background": "#1a1c1c",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f9f9f9",
+                        "tertiary-container": "#da3433",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#891e00",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#3c0800",
+                        "surface-dim": "#d9dada",
+                        "inverse-primary": "#ffb4a2",
+                        "surface-tint": "#b32a00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 80% 20%, rgba(214, 60, 16, 0.1) 0%, rgba(249, 249, 249, 0) 50%);
+        }
+        .text-gradient-primary {
+            background: linear-gradient(135deg, #af2900 0%, #d63c10 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #af2900 0%, #d63c10 100%);
+        }
+        .ambient-shadow {
+            box-shadow: 0 10px 40px rgba(26, 28, 28, 0.06);
+        }
+        .ghost-border {
+            border-bottom: 2px solid rgba(0, 105, 112, 0.2);
+            transition: border-color 0.3s ease;
+        }
+        .ghost-border:focus-within {
+            border-bottom-color: #006970;
+        }
+        .inner-glow {
+            box-shadow: inset 0 0 0 0.5px rgba(228, 190, 181, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-sm transition-colors duration-300">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-extrabold text-primary tracking-tighter font-headline">
+                Rotonac
+            </div>
+<div class="hidden md:flex items-center space-x-8 font-manrope text-sm font-semibold tracking-tight">
+<a class="text-primary border-b-2 border-primary pb-1" href="#home">Home</a>
+<a class="text-slate-700 hover:text-secondary transition-colors" href="#about">About Us</a>
+<a class="text-slate-700 hover:text-secondary transition-colors" href="#products">Products</a>
+<a class="text-slate-700 hover:text-secondary transition-colors" href="#contact">Contact</a>
+</div>
+<div class="hidden md:block">
+<a class="bg-gradient-primary text-on-primary px-6 py-2.5 rounded-xl font-semibold text-sm hover:scale-105 hover:shadow-lg transition-transform duration-300 inline-block" href="#quote">
+                    Get a Quote
+                </a>
+</div>
+<!-- Mobile Menu Button (Icon) -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu</span>
+</button>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center overflow-hidden bg-surface hero-gradient" id="home">
+<div class="max-w-7xl mx-auto px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="z-10 space-y-8">
+<h1 class="font-headline font-extrabold text-5xl md:text-6xl lg:text-[3.5rem] leading-tight text-on-surface tracking-tight">
+                        Engineered for <br/>
+<span class="text-gradient-primary">Enduring Fluid</span> <br/>
+                        Storage.
+                    </h1>
+<p class="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed">
+                        Industrial-grade rotational molding solutions designed for maximum durability and precision architecture. Built to secure your most critical resources.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<a class="bg-gradient-primary text-on-primary px-8 py-3.5 rounded-xl font-semibold text-center hover:scale-105 ambient-shadow transition-transform duration-300" href="#products">
+                            Explore Systems
+                        </a>
+<a class="px-8 py-3.5 rounded-xl font-semibold text-center border border-secondary/40 text-secondary hover:bg-secondary/5 transition-colors duration-300" href="#contact">
+                            Request Specifications
+                        </a>
+</div>
+<div class="flex items-center gap-6 pt-8 mt-8 border-t border-surface-container-high/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-sm font-medium text-on-surface-variant">ISO Certified</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="text-sm font-medium text-on-surface-variant">10-Year Warranty</span>
+</div>
+</div>
+</div>
+<div class="relative z-10 hidden lg:block">
+<div class="relative w-full aspect-[4/5] rounded-3xl overflow-hidden ambient-shadow inner-glow">
+<img class="w-full h-full object-cover object-center" data-alt="Modern industrial facility interior showing large, smooth blue rotational molded water tanks in a clean, brightly lit architectural setting, demonstrating structural integrity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABoFuSseipl6Geff2BnGneXfHWhwzvmaPenhb9RICGgJJt-cRghYn18sbQXXmFxvO6koMBVi8xgEgTbM_sb4z8JHKBgkUfZjwqRMS2HXjWUD3kdkUnChR5WwX-rzkgjDI6txzqKQzSlhmcE6MLWvajAWi7neWkrkyb619RHFRIdyrFl_s68NYW6WUbOkLuAt_fX05oZPuAMRGeJPqERAdVUOcr-729SQ3GFJyVuPeHDSs32HkpBX8qTp5dtZS2I81nAKUHv9g8LLw"/>
+<!-- Floating Glass Card -->
+<div class="absolute bottom-8 left-8 right-8 glass-panel rounded-2xl p-6 inner-glow">
+<div class="flex justify-between items-center mb-2">
+<span class="font-headline font-bold text-lg text-on-surface">Industrial Series X</span>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold tracking-wider">10,000L</span>
+</div>
+<p class="text-sm text-on-surface-variant font-medium">High-density polyethylene construction.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract background shape -->
+<div class="absolute right-0 top-0 w-1/2 h-full bg-surface-container-low -z-0 rounded-l-[100px] opacity-50 hidden lg:block transform translate-x-1/4"></div>
+</section>
+<!-- About Us Section -->
+<section class="py-24 bg-surface-container-low transition-colors duration-500" id="about">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<div class="lg:col-span-5 space-y-6">
+<h2 class="font-headline font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight">Quienes Somos</h2>
+<div class="w-16 h-1 bg-gradient-primary rounded-full mb-8"></div>
+<p class="font-body text-base text-on-surface-variant leading-relaxed">
+                            At Rotonac, we transcend traditional manufacturing. We are architects of fluid containment. With over two decades of engineering expertise in rotational molding, we provide structural solutions that industries rely on for absolute safety and longevity.
+                        </p>
+<p class="font-body text-base text-on-surface-variant leading-relaxed">
+                            Our process ensures seamless, stress-free vessels capable of withstanding extreme environmental conditions, ensuring your resources are preserved with uncompromising integrity.
+                        </p>
+</div>
+<div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
+<!-- Mission Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 ambient-shadow inner-glow flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-2xl">target</span>
+</div>
+<h3 class="font-headline font-bold text-xl text-on-surface mb-4">Mission</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mt-auto">
+                                To engineer the most reliable, structurally sound fluid storage systems through innovative polymer technology and precision manufacturing processes.
+                            </p>
+</div>
+<!-- Vision Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 ambient-shadow inner-glow flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
+<div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary text-2xl">visibility</span>
+</div>
+<h3 class="font-headline font-bold text-xl text-on-surface mb-4">Vision</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mt-auto">
+                                To set the global architectural standard for industrial and residential fluid containment, ensuring sustainable resource management for future generations.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Slider Section (Static Representation) -->
+<section class="py-24 bg-surface" id="products">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="font-headline font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight mb-4">Engineered Solutions</h2>
+<p class="text-on-surface-variant max-w-xl">Precision-molded tanks designed for specific industrial and residential applications.</p>
+</div>
+<div class="hidden sm:flex gap-4">
+<button class="w-12 h-12 rounded-full border border-surface-container-highest flex items-center justify-center hover:bg-surface-container-low transition-colors text-on-surface">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-surface-container-highest flex items-center justify-center bg-secondary text-on-secondary hover:bg-secondary/90 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Product Card 1: Residential -->
+<div class="bg-surface-container-lowest rounded-3xl overflow-hidden ambient-shadow inner-glow group">
+<div class="relative h-64 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Clean, modern beige residential water tank installed next to a contemporary home wall with green plants around it, bathed in warm afternoon sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB3jnYkFwsEP_7AaV8wmko3UhZ5D2Q9De_PGGRIaH6Hfy7rQrNMKk49KL-syEnuF-wTOvrlBn3mzM7tjFKHXlzLqfsIzCCK2He4YZvx2HabPFPJ9iCQYqB_21tbpfBFWrmoJpHJH6qtfO1GjXXHhb1sFvGXICuz9g_AcmoAjJ_cVeO5s6pvnH9xjFKMtSkQPHGfKvYshgCv3b9lOWzxYiZLCN03-Fwol_N6e4LFocxgtNFvp6yWpJNufCbcHZbHxPTvPsBzAIa-S0"/>
+<div class="absolute top-4 right-4 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold tracking-wider">RESIDENTIAL</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline font-bold text-2xl text-on-surface mb-2">EcoHome Series</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">UV-stabilized, food-grade polyethylene tanks designed for safe domestic water storage. Compact footprint ideal for urban installations.</p>
+<div class="flex gap-2 mb-6">
+<div class="w-16 h-12 rounded-lg overflow-hidden border border-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Close up detail of the textured, durable surface of a beige residential water tank showing the high quality finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbLNDRVDsUDC0umjDUW7sPIa9BXfso4Hv_UvCzsfORXmQy99_lzhO-VKrW45tkYuWvEyePnYhNUXMhN6DsSmqYvKX_cn2_-CYHREgORWH1DJIHeZO0gRP7VkXyNaQFA6TCrawYxatF4ZPfs6llrNAOfoHiAy6T6GT3rL2rKJTx23u0MgC7KRSZOqbWXUSu59R3uuKwZsezO2qjtwiblus8ONUB3A-IlaSW1D7tBeru-TUQkVoMCgyYXLxnwJj-X-JTPkE4NwOss0s"/>
+</div>
+<div class="w-16 h-12 rounded-lg overflow-hidden border border-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Another angle of the residential water tank showing the secure lid mechanism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPV5L5uYeN1KcgKSndqZpm4RYURZW8c1Y2_iEGfi5Yusot2Ynpf2YuUryjTfo2zDxl63eEO_23RJend6qqz6PnofraZPfl7thePQykOxYg86bLpushQh3wtQhrif7Z3Ll7h7CZcyepHzKH-9geyjU34J34V3CBb6xmeIXGO8q7mhbehKe2gUw-QJqlcdqni3ACo2fQJ5BRcekELpXIK8hnppoMkzO2Yb-1aWDSG5o-80vNm-1kwZNHzkOHVwDWs_Eizy1mmn8a5NM"/>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4">
+<table class="w-full text-sm">
+<tbody>
+<tr class="border-b border-surface-container-highest/50">
+<td class="py-2 text-on-surface-variant font-medium">Capacity</td>
+<td class="py-2 text-right font-semibold text-on-surface">1,000L - 5,000L</td>
+</tr>
+<tr class="border-b border-surface-container-highest/50">
+<td class="py-2 text-on-surface-variant font-medium">Diameter</td>
+<td class="py-2 text-right font-semibold text-on-surface">1.10m - 1.85m</td>
+</tr>
+<tr>
+<td class="py-2 text-on-surface-variant font-medium">Height</td>
+<td class="py-2 text-right font-semibold text-on-surface">1.25m - 2.10m</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Product Card 2: Industrial -->
+<div class="bg-surface-container-lowest rounded-3xl overflow-hidden ambient-shadow inner-glow group">
+<div class="relative h-64 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Massive black industrial chemical storage tanks in a pristine outdoor facility with clear blue sky, showing heavy duty engineering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIX8opODW-dn2GkC-G3sOqeQz_7a-yc_I9eLCfoQ15y6aBmu2ABhnIH7AcOsBLR4yQIYYLRRvjFCb8elkzWmD-yfR9YflzbfE08L8JTWwTjlAy5K3ufDTX09stjjHpoWIjNkVbZyMjQ8hKUXITwI7abonXRtk6FSq0XRu5Ex5jqucmJdD2lweAxrexV80mgUUyhJfmCX0AGbseVzyvHI_3l8G30yJl6OK8mhdi7teV4hbCLk_79yCJvAQKR8y3gXug75q7B53Korw"/>
+<div class="absolute top-4 right-4 bg-primary text-on-primary px-3 py-1 rounded-full text-xs font-bold tracking-wider">INDUSTRIAL</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline font-bold text-2xl text-on-surface mb-2">Titan Heavy-Duty</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Extra-thick walled vessels engineered for chemical containment and large-scale agricultural storage. Chemical resistant inner layer.</p>
+<div class="flex gap-2 mb-6">
+<div class="w-16 h-12 rounded-lg overflow-hidden border border-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Close up of robust heavy duty industrial plumbing fittings and valves attached to a large black tank." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlvnzVi1iKZ132USFg0XE3lA0wkwbOUdsybOUXBr2dSzkvpw2dolY76SgCA7zp1VxNelldzPy3AV1WtlXZTooUhToBpkuux5jLPBBsIZNKXPmkrNM3Ack0D_C13WyIOb01lrxfXrBX4V7HFA_2d_KYL5ISLO20MeLSZG7BL6h3xN41PlXHQPvKt1iNlyWC5nV1-lsTRUhhmYuRbm_uXn06EJoJRzR2YVS5OnQNuyp7oxOf33BGjoPbcxPrVhzLd_ULCs1_lUqLnfc"/>
+</div>
+<div class="w-16 h-12 rounded-lg overflow-hidden border border-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Wide shot showing a row of identical industrial tanks lined up perfectly, demonstrating manufacturing consistency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsxu91ZaBdiCj1Tt-lvbReBC4_rZM0zp7T0FLjnlj1LzSpaZIC_buGWmcuCjmzA7k22WuuQbUycKPVgaqq3NtNVS4cscxhNNcHqPDDCmbM48GqekPTC_nHu4medntw1eVeU4mBaSgl46udjbNqYdArY8LYeSdlzWWFECcf16BWIMu8wP4SUImnI39PKLtXyB_VuvDK19CGqXtJhvlrA9a6Ppjr6PDWbYoNr-YZ8VtZONDZiBf--Hd5krKte0t03Ehtfb--7DOgEaQ"/>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4">
+<table class="w-full text-sm">
+<tbody>
+<tr class="border-b border-surface-container-highest/50">
+<td class="py-2 text-on-surface-variant font-medium">Capacity</td>
+<td class="py-2 text-right font-semibold text-on-surface">10,000L - 25,000L</td>
+</tr>
+<tr class="border-b border-surface-container-highest/50">
+<td class="py-2 text-on-surface-variant font-medium">Diameter</td>
+<td class="py-2 text-right font-semibold text-on-surface">2.40m - 3.20m</td>
+</tr>
+<tr>
+<td class="py-2 text-on-surface-variant font-medium">Height</td>
+<td class="py-2 text-right font-semibold text-on-surface">2.60m - 3.80m</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-24 bg-surface-container-low relative overflow-hidden" id="contact">
+<!-- Decorative Background Element -->
+<div class="absolute left-0 bottom-0 w-1/3 h-1/2 bg-gradient-to-tr from-primary/5 to-transparent -z-0"></div>
+<div class="max-w-7xl mx-auto px-8 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<!-- Contact Info -->
+<div>
+<h2 class="font-headline font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight mb-6">Initiate Your Project</h2>
+<p class="text-on-surface-variant mb-12 max-w-md">Connect with our engineering team to discuss custom configurations, material specifications, or immediate procurement needs.</p>
+<div class="space-y-8">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-secondary text-sm">location_on</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface text-lg">Headquarters</h4>
+<p class="text-sm text-on-surface-variant mt-1">Industrial Park Zona Norte<br/>Building 4, Sector B<br/>Monterrey, NL</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0 mt-1">
+<span class="material-symbols-outlined text-secondary text-sm">mail</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-on-surface text-lg">Direct Contact</h4>
+<p class="text-sm text-on-surface-variant mt-1">sales@rotonac.com<br/>engineering@rotonac.com</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Contact Form -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 md:p-10 ambient-shadow inner-glow">
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="ghost-border pb-2 group">
+<label class="block text-xs font-semibold text-on-surface-variant mb-2 uppercase tracking-wider group-focus-within:text-secondary transition-colors">Full Name</label>
+<input class="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0 text-sm" placeholder="John Doe" type="text"/>
+</div>
+<div class="ghost-border pb-2 group">
+<label class="block text-xs font-semibold text-on-surface-variant mb-2 uppercase tracking-wider group-focus-within:text-secondary transition-colors">Email Address</label>
+<input class="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0 text-sm" placeholder="john@company.com" type="email"/>
+</div>
+</div>
+<div class="ghost-border pb-2 group">
+<label class="block text-xs font-semibold text-on-surface-variant mb-2 uppercase tracking-wider group-focus-within:text-secondary transition-colors">Interested In</label>
+<select class="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0 text-sm cursor-pointer appearance-none">
+<option disabled="" selected="" value="">Select an option</option>
+<option value="residential">Residential Tanks</option>
+<option value="industrial">Industrial Storage</option>
+<option value="custom">Custom Engineering</option>
+</select>
+</div>
+<div class="ghost-border pb-2 group">
+<label class="block text-xs font-semibold text-on-surface-variant mb-2 uppercase tracking-wider group-focus-within:text-secondary transition-colors">Message</label>
+<textarea class="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0 text-sm resize-none" placeholder="Project details or specifications..." rows="3"></textarea>
+</div>
+<button class="w-full bg-gradient-primary text-on-primary py-4 rounded-xl font-bold text-sm hover:scale-[1.02] hover:shadow-lg transition-all duration-300 mt-4" type="button">
+                                Submit Inquiry
+                            </button>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 bg-surface-container-low border-t border-surface-container-highest transition-colors duration-300">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+<div class="flex flex-col gap-4">
+<div class="text-xl font-bold text-on-surface font-headline">
+                    Rotonac
+                </div>
+<p class="font-body text-sm text-on-surface-variant">
+                    © 2024 Rotonac. Engineering Excellence in Fluid Storage.
+                </p>
+</div>
+<div class="flex flex-col md:items-center justify-center">
+<div class="flex flex-col space-y-3 font-inter text-sm">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Installation Guide</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Distributors</a>
+</div>
+</div>
+<div class="flex md:justify-end items-start gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">share</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">language</span>
+</a>
+</div>
+</div>
+</footer>
+</body></html>
