@@ -7,6 +7,23 @@ import ProductosPage from './pages/ProductosPage';
 function LandingPage() {
   const sliderImages = ['/hero1.png', '/hero2.png', '/hero3.png'];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const touchStartX = React.useRef(0);
+  const touchEndX = React.useRef(0);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.changedTouches[0].screenX;
+  };
+  const handleTouchEnd = (e) => {
+    touchEndX.current = e.changedTouches[0].screenX;
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        setCurrentImageIndex((prev) => (prev + 1) % sliderImages.length);
+      } else {
+        setCurrentImageIndex((prev) => (prev - 1 + sliderImages.length) % sliderImages.length);
+      }
+    }
+  };
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -36,37 +53,15 @@ function LandingPage() {
   return (
     <main className="pt-24">
       {/* Hero Section */}
-      <section className="relative min-h-[921px] flex items-center overflow-hidden bg-surface hero-gradient" id="home">
-        <div className="max-w-7xl mx-auto px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="z-10 space-y-8">
-            <h1 className="font-headline font-extrabold text-5xl md:text-6xl lg:text-[4rem] leading-tight text-on-surface tracking-tight">
-              <span className="text-gradient-primary">Fábrica</span> de<br />
-              Tanques de Agua
-            </h1>
-            <p className="font-body text-lg text-on-surface-variant max-w-lg leading-relaxed">
-              Especialistas en rotomoldeo industrial para un almacenamiento de fluidos sin filtraciones. Unimos arquitectura de precisión con materiales de última generación para ofrecerte tanques duraderos ante cualquier clima.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link className="bg-gradient-primary text-on-primary px-8 py-3.5 rounded-xl font-semibold text-center hover:scale-105 ambient-shadow transition-transform duration-300" to="/productos">
-                Explorar Productos
-              </Link>
-              <a className="px-8 py-3.5 rounded-xl font-semibold text-center border border-secondary/40 text-secondary hover:bg-secondary/5 transition-colors duration-300" href="#contact">
-                Solicitar Más información
-              </a>
-            </div>
-            <div className="flex items-center gap-6 pt-8 mt-8 border-t border-surface-container-high/50">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
-                <span className="text-sm font-medium text-on-surface-variant">Certificación ISO</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>shield</span>
-                <span className="text-sm font-medium text-on-surface-variant">10 Años de Garantía</span>
-              </div>
-            </div>
-          </div>
-          <div className="relative z-10 hidden lg:block group">
-            <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden ambient-shadow inner-glow cursor-pointer">
+      <section className="relative min-h-[100svh] lg:min-h-[921px] flex items-center overflow-hidden bg-surface hero-gradient" id="home">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center py-8 lg:py-0">
+          {/* Image Slider - shown first on mobile (order-first), second on desktop */}
+          <div className="relative z-10 group order-first lg:order-last">
+            <div
+              className="relative w-full aspect-[4/3] lg:aspect-[4/5] rounded-2xl lg:rounded-3xl overflow-hidden ambient-shadow inner-glow cursor-pointer"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               {sliderImages.map((src, idx) => (
                 <img
                   key={src}
@@ -76,23 +71,52 @@ function LandingPage() {
                 />
               ))}
               {/* Slider Indicators */}
-              <div className="absolute bottom-32 left-0 right-0 flex justify-center gap-2 z-20">
+              <div className="absolute bottom-16 lg:bottom-32 left-0 right-0 flex justify-center gap-2.5 z-20">
                 {sliderImages.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentImageIndex(idx)}
-                    className={`h-2 rounded-full transition-all duration-300 ${currentImageIndex === idx ? 'bg-primary w-8' : 'w-2 bg-white/60 hover:bg-white'} backdrop-blur-sm shadow-sm`}
+                    className={`h-2.5 lg:h-2 rounded-full transition-all duration-300 ${currentImageIndex === idx ? 'bg-primary w-8' : 'w-2.5 lg:w-2 bg-white/60 hover:bg-white'} backdrop-blur-sm shadow-sm`}
+                    style={{ minWidth: '10px', minHeight: '10px' }}
                     aria-label={`Mostrar diapositiva ${idx + 1}`}
                   />
                 ))}
               </div>
               {/* Floating Glass Card */}
-              <div className="absolute bottom-8 left-8 right-8 glass-panel rounded-2xl p-6 inner-glow z-30">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-headline font-bold text-lg text-on-surface">Serie Industrial X</span>
-                  <span className="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold tracking-wider">10,000L</span>
+              <div className="absolute bottom-3 left-3 right-3 lg:bottom-8 lg:left-8 lg:right-8 glass-panel rounded-xl lg:rounded-2xl p-4 lg:p-6 inner-glow z-30">
+                <div className="flex justify-between items-center mb-1 lg:mb-2">
+                  <span className="font-headline font-bold text-base lg:text-lg text-on-surface">Serie Industrial X</span>
+                  <span className="bg-secondary-container text-on-secondary-container px-2.5 lg:px-3 py-1 rounded-full text-xs font-bold tracking-wider">10,000L</span>
                 </div>
-                <p className="text-sm text-on-surface-variant font-medium">Construcción en polietileno de alta densidad.</p>
+                <p className="text-xs lg:text-sm text-on-surface-variant font-medium">Construcción en polietileno de alta densidad.</p>
+              </div>
+            </div>
+          </div>
+          {/* Text Content */}
+          <div className="z-10 space-y-6 lg:space-y-8 order-last lg:order-first">
+            <h1 className="font-headline font-extrabold text-4xl md:text-5xl lg:text-[4rem] leading-tight text-on-surface tracking-tight">
+              <span className="text-gradient-primary">Fábrica</span> de<br />
+              Tanques de Agua
+            </h1>
+            <p className="font-body text-base lg:text-lg text-on-surface-variant max-w-lg leading-relaxed">
+              Especialistas en rotomoldeo industrial para un almacenamiento de fluidos sin filtraciones. Unimos arquitectura de precisión con materiales de última generación para ofrecerte tanques duraderos ante cualquier clima.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 pt-2 lg:pt-4">
+              <Link className="bg-gradient-primary text-on-primary px-8 py-3.5 rounded-xl font-semibold text-center hover:scale-105 ambient-shadow transition-transform duration-300" to="/productos">
+                Explorar Productos
+              </Link>
+              <a className="px-8 py-3.5 rounded-xl font-semibold text-center border border-secondary/40 text-secondary hover:bg-secondary/5 transition-colors duration-300" href="#contact">
+                Solicitar Más información
+              </a>
+            </div>
+            <div className="flex items-center gap-4 lg:gap-6 pt-6 lg:pt-8 mt-6 lg:mt-8 border-t border-surface-container-high/50">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+                <span className="text-xs lg:text-sm font-medium text-on-surface-variant">Certificación ISO</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>shield</span>
+                <span className="text-xs lg:text-sm font-medium text-on-surface-variant">10 Años de Garantía</span>
               </div>
             </div>
           </div>
@@ -263,9 +287,17 @@ function LandingPage() {
 
 // ─── Shared Header ───────────────────────────────────────────────────
 function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Close menu on route change
+  useEffect(() => {
+    const handleClick = () => setMobileMenuOpen(false);
+    return () => handleClick;
+  }, []);
+
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-sm transition-colors duration-300">
-      <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+      <div className="flex justify-between items-center px-6 md:px-8 py-4 max-w-7xl mx-auto">
         <Link to="/" className="flex items-center">
           <img src="/logo.jpg" alt="Rotonac Logo" className="h-12 w-auto object-contain" />
         </Link>
@@ -280,10 +312,73 @@ function Header() {
             Cotizar
           </a>
         </div>
-        {/* Mobile Menu Button (Icon) */}
-        <button className="md:hidden text-primary">
-          <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>menu</span>
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-primary p-2 -mr-2 rounded-lg hover:bg-primary/5 transition-colors"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+        >
+          <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>
+            {mobileMenuOpen ? 'close' : 'menu'}
+          </span>
         </button>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`md:hidden fixed inset-0 top-[72px] bg-black/40 backdrop-blur-sm z-40 transition-opacity duration-300 ${
+          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setMobileMenuOpen(false)}
+      />
+
+      {/* Mobile Menu Panel */}
+      <div
+        className={`md:hidden fixed top-[72px] left-0 right-0 bg-white/95 backdrop-blur-xl z-50 shadow-xl transition-all duration-300 ease-out ${
+          mobileMenuOpen
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 -translate-y-4 pointer-events-none'
+        }`}
+      >
+        <div className="flex flex-col px-6 py-6 space-y-1">
+          <Link
+            className="text-primary font-semibold text-lg py-3 px-4 rounded-xl bg-primary/5"
+            to="/"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Inicio
+          </Link>
+          <a
+            className="text-slate-700 font-semibold text-lg py-3 px-4 rounded-xl hover:bg-slate-50 transition-colors"
+            href="/#about"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Nosotros
+          </a>
+          <Link
+            className="text-slate-700 font-semibold text-lg py-3 px-4 rounded-xl hover:bg-slate-50 transition-colors"
+            to="/productos"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Productos
+          </Link>
+          <a
+            className="text-slate-700 font-semibold text-lg py-3 px-4 rounded-xl hover:bg-slate-50 transition-colors"
+            href="/#contact"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Contacto
+          </a>
+          <div className="pt-4 border-t border-slate-100 mt-2">
+            <a
+              className="bg-gradient-primary text-on-primary px-6 py-3.5 rounded-xl font-semibold text-center block hover:shadow-lg transition-all duration-300"
+              href="/#contact"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Cotizar Ahora
+            </a>
+          </div>
+        </div>
       </div>
     </nav>
   );
