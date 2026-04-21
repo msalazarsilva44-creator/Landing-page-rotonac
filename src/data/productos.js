@@ -234,7 +234,7 @@ export const productos = [
     badgeColor: 'secondary',
     modelo: 'Saturno 320',
     descripcion: 'Tanque diseñado con 11 anillos horizontales súper reforzados.',
-    imagen: '/categorias/saturno-320.jpg',
+    imagen: '/categorias/saturno-320.png',
     specs: [
       { label: 'Código', value: 'ST-320' },
       { label: 'Capacidad Total', value: '320 L' },
