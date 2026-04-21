@@ -30,17 +30,46 @@ function LandingPage() {
     interes: '',
     mensaje: ''
   });
+  const [formStatus, setFormStatus] = useState({ loading: false, success: false, error: null });
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     const { nombre, email, interes, mensaje } = formData;
     if (!nombre.trim() || !mensaje.trim()) return;
     
-    const phoneNumber = "584143182581"; 
-    const interesLabel = interes ? `Estoy interesado en: ${interes}` : 'Consulta General';
-    const text = `Hola Rotonac, mi nombre es ${nombre}.%0A%0A${interesLabel}%0A%0A${mensaje}%0A%0A(Mi correo es: ${email})`;
-    const waUrl = `https://wa.me/${phoneNumber}?text=${text}`;
-    window.open(waUrl, "_blank");
+    setFormStatus({ loading: true, success: false, error: null });
+
+    try {
+      // 1. Enviar Email vía API (Resend)
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error('Error al enviar el email');
+
+      setFormStatus({ loading: false, success: true, error: null });
+
+      // 2. Preparar WhatsApp
+      const phoneNumber = "584144436607"; 
+      const interesLabel = interes ? `Estoy interesado en: ${interes}` : 'Consulta General';
+      const text = `Hola Rotonac, mi nombre es ${nombre}.%0A%0A${interesLabel}%0A%0A${mensaje}%0A%0A(Mi correo es: ${email})`;
+      const waUrl = `https://wa.me/${phoneNumber}?text=${text}`;
+      
+      // Abrir WhatsApp después de un breve delay
+      setTimeout(() => {
+        window.open(waUrl, "_blank");
+        // Resetear formulario
+        setFormData({ nombre: '', email: '', interes: '', mensaje: '' });
+        setTimeout(() => setFormStatus({ loading: false, success: false, error: null }), 5000);
+      }, 1000);
+
+    } catch (err) {
+      setFormStatus({ loading: false, success: false, error: err.message });
+      // Si falla el email, al menos intentar WhatsApp directly?
+      console.error(err);
+    }
   };
 
   useEffect(() => {
@@ -228,7 +257,7 @@ function LandingPage() {
                   </div>
                   <div>
                     <h4 className="font-headline font-bold text-on-surface text-lg">Sede Principal</h4>
-                    <p className="text-sm text-on-surface-variant mt-1">Parque Industrial Zona Norte<br />Edificio 4, Sector B<br />Monterrey, NL</p>
+                    <p className="text-sm text-on-surface-variant mt-1">Zona Industrial Soco, Prolongación Av. Inter-Industrial <br />Galpón 1-A, La Victoria, Edo. Aragua</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -237,7 +266,7 @@ function LandingPage() {
                   </div>
                   <div>
                     <h4 className="font-headline font-bold text-on-surface text-lg">Contacto Directo</h4>
-                    <p className="text-sm text-on-surface-variant mt-1">ventas@rotonac.com<br />ingenieria@rotonac.com</p>
+                    <p className="text-sm text-on-surface-variant mt-1">viplas.ca@gmail.com<br />Rotonac@gmail.com</p>
                   </div>
                 </div>
               </div>
@@ -270,12 +299,37 @@ function LandingPage() {
                   <label className="block text-xs font-semibold text-on-surface-variant mb-2 uppercase tracking-wider group-focus-within:text-secondary transition-colors">Mensaje</label>
                   <textarea required value={formData.mensaje} onChange={(e) => setFormData({...formData, mensaje: e.target.value})} className="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0 text-sm resize-none" placeholder="Detalles o especificaciones del proyecto..." rows={3}></textarea>
                 </div>
-                <button className="w-full bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white py-4 rounded-xl font-bold text-sm hover:scale-[1.02] hover:shadow-lg transition-all duration-300 mt-4 flex items-center justify-center gap-2" type="submit">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path fillRule="evenodd" d="M12.031 2C6.486 2 2 6.486 2 12.031c0 1.761.458 3.486 1.332 5l-1.328 4.887 5-1.314c1.472.843 3.149 1.288 4.88 1.288h.001c5.546 0 10.035-4.485 10.035-10.03C22.066 6.467 17.58 2 12.031 2zm6.002 14.538c-.247.697-1.42 1.353-1.954 1.439-.512.083-1.17.15-3.342-.748-3.093-1.276-5.076-4.42-5.232-4.629-.153-.207-1.253-1.666-1.253-3.176 0-1.51.782-2.253 1.06-2.548.277-.294.606-.367.808-.367.202 0 .404.004.582.012.185.008.435-.067.68.536.257.632.833 2.038.908 2.189.073.151.122.327.024.524-.099.195-.148.318-.295.49-.148.171-.31.365-.443.513-.146.166-.301.346-.129.645.171.298.761 1.26 1.637 2.037 1.132.1 2.138 1.314 2.457 1.51.319.196.505.172.695-.049.19-.22.825-.964 1.045-1.296.22-.332.44-.277.734-.167.294.11 1.86.88 2.18 1.038.319.158.533.245.61.382.078.136.078.789-.169 1.486z" clipRule="evenodd" />
-                  </svg>
-                  Enviar vía WhatsApp
+                <button 
+                  disabled={formStatus.loading}
+                  className={`w-full text-white py-4 rounded-xl font-bold text-sm hover:scale-[1.02] hover:shadow-lg transition-all duration-300 mt-4 flex items-center justify-center gap-2 ${formStatus.loading ? 'bg-slate-400' : 'bg-[#D93025] shadow-sm'}`} 
+                  type="submit"
+                >
+                  {formStatus.loading ? (
+                    <span className="flex items-center gap-2">
+                       <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Enviando...
+                    </span>
+                  ) : (
+                    <>
+                      <span className="material-symbols-outlined text-xl">mail</span>
+                      Enviar Consulta por Email
+                    </>
+                  )}
                 </button>
+                {formStatus.success && (
+                  <div className="mt-4 p-3 bg-green-50 text-green-700 text-sm rounded-lg text-center font-medium animate-bounce">
+                    ¡Mensaje enviado con éxito! Abriendo WhatsApp...
+                  </div>
+                )}
+                {formStatus.error && (
+                  <div className="mt-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg text-center font-medium">
+                    Error: {formStatus.error}. Intenta de nuevo.
+                  </div>
+                )}
+
               </form>
             </div>
           </div>
@@ -429,6 +483,10 @@ function Footer() {
               <span className="material-symbols-outlined text-lg translate-y-0.5">badge</span>
               <span>RIF: J-31081381-7</span>
             </div>
+            <div className="flex items-start gap-3 border-t border-on-secondary/10 pt-4 mt-2">
+              <span className="material-symbols-outlined text-lg translate-y-0.5">mail</span>
+              <span className="leading-relaxed">viplas.ca@gmail.com<br />Rotonac@gmail.com</span>
+            </div>
           </div>
         </div>
 
@@ -517,7 +575,7 @@ function App() {
       <ScrollToTopButton />
       {/* Botón Flotante Global WhatsApp */}
       <a 
-        href="https://wa.me/584143182581?text=Hola,%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20tanques%20y%20productos%20Rotonac." 
+        href="https://wa.me/584144436607?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web,%20necesito%20m%C3%A1s%20informaci%C3%B3n%20acerca%20de%20los%20productos%20que%20venden." 
         target="_blank" 
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-[100] bg-[#25D366] text-white p-3.5 rounded-full shadow-xl hover:-translate-y-1 hover:shadow-2xl hover:bg-[#20bd5a] transition-all duration-300 flex items-center justify-center animate-[bounce_3s_infinite]"
