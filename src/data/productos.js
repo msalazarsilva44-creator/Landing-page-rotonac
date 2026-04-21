@@ -261,7 +261,7 @@ export const productos = [
       { label: 'Material', value: 'Polietileno (100% materia prima virgen importada)' },
       { label: 'Garantía', value: '5 Años' },
     ],
-    tecnologia: '11 Anillos Reforzados',
+    tecnologia: '11 Anillos de Reforzamiento',
   },
   {
     id: 'vip-500',
