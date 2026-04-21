@@ -258,7 +258,7 @@ function LandingPage() {
                   <div>
                     <h4 className="font-headline font-bold text-on-surface text-lg">Sede Principal</h4>
                     <a 
-                      href="https://www.google.com/maps/search/?api=1&query=Zona+Industrial+Soco+Prolongacion+Av+Inter-Industrial+Galpon+1-A+La+Victoria+Aragua+Venezuela"
+                      href="https://www.google.com/maps/place/Rotonac+C.A./@10.2215452,-67.3337934,18.75z/data=!4m18!1m11!4m10!1m2!1m1!2sZona+Industrial+Soco+Prolongacion+Av+Inter-Industrial+Galpon+1!1m6!1m2!1s0x8c2a9e634574d085:0x8e12163158540335!2sLa+Victoria,+2121,+Aragua!2m2!1d-67.326501!2d10.218625!3m5!1s0x8c2a9ffa15159e0d:0x4de1f3c01c9ca56e!8m2!3d10.2215566!4d-67.3332265!16s%2Fg%2F11frb5fx66?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-on-surface-variant mt-1 hover:text-secondary transition-colors underline-offset-2 hover:underline inline-block"
@@ -479,7 +479,7 @@ function Footer() {
           <h4 className="font-headline font-bold text-lg mb-6">Información de Contacto</h4>
           <div className="flex flex-col space-y-4 font-inter text-sm text-secondary-fixed-dim">
             <a 
-              href="https://www.google.com/maps/search/?api=1&query=Zona+Industrial+Soco+Prolongacion+Av+Inter-Industrial+Galpon+1-A+La+Victoria+Aragua+Venezuela"
+              href="https://www.google.com/maps/place/Rotonac+C.A./@10.2215452,-67.3337934,18.75z/data=!4m18!1m11!4m10!1m2!1m1!2sZona+Industrial+Soco+Prolongacion+Av+Inter-Industrial+Galpon+1!1m6!1m2!1s0x8c2a9e634574d085:0x8e12163158540335!2sLa+Victoria,+2121,+Aragua!2m2!1d-67.326501!2d10.218625!3m5!1s0x8c2a9ffa15159e0d:0x4de1f3c01c9ca56e!8m2!3d10.2215566!4d-67.3332265!16s%2Fg%2F11frb5fx66?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-start gap-3 hover:text-on-secondary transition-colors group"
