@@ -257,7 +257,14 @@ function LandingPage() {
                   </div>
                   <div>
                     <h4 className="font-headline font-bold text-on-surface text-lg">Sede Principal</h4>
-                    <p className="text-sm text-on-surface-variant mt-1">Zona Industrial Soco, Prolongación Av. Inter-Industrial <br />Galpón 1-A, La Victoria, Edo. Aragua</p>
+                    <a 
+                      href="https://www.google.com/maps/search/?api=1&query=Zona+Industrial+Soco+Prolongacion+Av+Inter-Industrial+Galpon+1-A+La+Victoria+Aragua+Venezuela"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-on-surface-variant mt-1 hover:text-secondary transition-colors underline-offset-2 hover:underline inline-block"
+                    >
+                      Zona Industrial Soco, Prolongación Av. Inter-Industrial <br />Galpón 1-A, La Victoria, Edo. Aragua
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -471,10 +478,15 @@ function Footer() {
         <div className="flex flex-col xl:col-span-1">
           <h4 className="font-headline font-bold text-lg mb-6">Información de Contacto</h4>
           <div className="flex flex-col space-y-4 font-inter text-sm text-secondary-fixed-dim">
-            <div className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-lg translate-y-0.5">location_on</span>
-              <span className="leading-relaxed">Zona Industrial Soco, Prolongación Av. Inter-Industrial Galpón 1-A,<br />La Victoria, Edo. Aragua</span>
-            </div>
+            <a 
+              href="https://www.google.com/maps/search/?api=1&query=Zona+Industrial+Soco+Prolongacion+Av+Inter-Industrial+Galpon+1-A+La+Victoria+Aragua+Venezuela"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-3 hover:text-on-secondary transition-colors group"
+            >
+              <span className="material-symbols-outlined text-lg translate-y-0.5 group-hover:text-on-secondary transition-colors">location_on</span>
+              <span className="leading-relaxed underline-offset-2 group-hover:underline">Zona Industrial Soco, Prolongación Av. Inter-Industrial Galpón 1-A,<br />La Victoria, Edo. Aragua</span>
+            </a>
             <div className="flex items-start gap-3">
               <span className="material-symbols-outlined text-lg translate-y-0.5">call</span>
               <span className="leading-relaxed">Fijo: 0244-3224942 / 3222181<br />Móvil: 0414-3182581</span>
