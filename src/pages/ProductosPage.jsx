@@ -6,13 +6,18 @@ function ProductosPage() {
   const [searchParams] = useSearchParams();
   const categoriaParam = searchParams.get('categoria') || 'todos';
   const [filtroActivo, setFiltroActivo] = useState(categoriaParam);
+  const [busqueda, setBusqueda] = useState('');
   const [imagenAmpliada, setImagenAmpliada] = useState(null);
   const [imagenIndex, setImagenIndex] = useState(0);
 
   const productosFiltrados = useMemo(() => {
-    if (filtroActivo === 'todos') return productos;
-    return productos.filter(p => p.categoria === filtroActivo);
-  }, [filtroActivo]);
+    let lista = filtroActivo === 'todos' ? productos : productos.filter(p => p.categoria === filtroActivo);
+    if (busqueda.trim()) {
+      const query = busqueda.trim().toLowerCase();
+      lista = lista.filter(p => p.modelo.toLowerCase().startsWith(query) || p.modelo.toLowerCase().includes(query));
+    }
+    return lista;
+  }, [filtroActivo, busqueda]);
 
   return (
     <main className="pt-24">
@@ -32,33 +37,56 @@ function ProductosPage() {
         </div>
       </section>
 
-      {/* Filter Tabs */}
       <section className="sticky top-[72px] z-40 bg-white/80 backdrop-blur-xl border-b border-surface-container-highest/30 shadow-sm">
         <div className="max-w-7xl mx-auto px-8 py-4">
-          <div className="flex items-center gap-3 overflow-x-auto pb-1 scrollbar-hide">
-            <button
-              onClick={() => setFiltroActivo('todos')}
-              className={`px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
-                filtroActivo === 'todos'
-                  ? 'bg-gradient-primary text-on-primary shadow-md'
-                  : 'bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high'
-              }`}
-            >
-              Todos
-            </button>
-            {categorias.map(cat => (
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+            {/* Barra de búsqueda */}
+            <div className="relative flex-shrink-0 w-full sm:w-64">
+              <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+              <input
+                type="text"
+                value={busqueda}
+                onChange={e => setBusqueda(e.target.value)}
+                placeholder="Buscar producto..."
+                className="w-full pl-9 pr-8 py-2.5 rounded-xl text-sm bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/60 border border-transparent focus:border-primary/40 focus:ring-0 focus:outline-none transition-all duration-200"
+              />
+              {busqueda && (
+                <button
+                  onClick={() => setBusqueda('')}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface transition-colors"
+                >
+                  <span className="material-symbols-outlined text-[16px]">close</span>
+                </button>
+              )}
+            </div>
+            {/* Separador */}
+            <div className="hidden sm:block h-6 w-px bg-surface-container-highest/50"></div>
+            {/* Filtros de categoría */}
+            <div className="flex items-center gap-3 overflow-x-auto pb-1 scrollbar-hide">
               <button
-                key={cat.id}
-                onClick={() => setFiltroActivo(cat.id)}
+                onClick={() => setFiltroActivo('todos')}
                 className={`px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
-                  filtroActivo === cat.id
+                  filtroActivo === 'todos'
                     ? 'bg-gradient-primary text-on-primary shadow-md'
                     : 'bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high'
                 }`}
               >
-                {cat.nombre}
+                Todos
               </button>
-            ))}
+              {categorias.map(cat => (
+                <button
+                  key={cat.id}
+                  onClick={() => setFiltroActivo(cat.id)}
+                  className={`px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
+                    filtroActivo === cat.id
+                      ? 'bg-gradient-primary text-on-primary shadow-md'
+                      : 'bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high'
+                  }`}
+                >
+                  {cat.nombre}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -71,6 +99,9 @@ function ProductosPage() {
             Mostrando <span className="font-bold text-on-surface">{productosFiltrados.length}</span> producto{productosFiltrados.length !== 1 ? 's' : ''}
             {filtroActivo !== 'todos' && (
               <> en <span className="font-bold text-primary">{categorias.find(c => c.id === filtroActivo)?.nombre}</span></>
+            )}
+            {busqueda.trim() && (
+              <> para <span className="font-bold text-secondary">&ldquo;{busqueda}&rdquo;</span></>
             )}
           </p>
 
