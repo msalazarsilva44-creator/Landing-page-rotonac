@@ -23,7 +23,7 @@ function ProductosPage() {
     <main className="pt-24">
       {/* Page Header */}
       <section className="py-16 bg-surface hero-gradient">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <Link to="/" className="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors mb-8 group">
             <span className="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
             <span className="font-medium text-sm">Volver al Inicio</span>
@@ -38,7 +38,7 @@ function ProductosPage() {
       </section>
 
       <section className="sticky top-[72px] z-40 bg-white/80 backdrop-blur-xl border-b border-surface-container-highest/30 shadow-sm">
-        <div className="max-w-7xl mx-auto px-8 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
             {/* Barra de búsqueda */}
             <div className="relative flex-shrink-0 w-full sm:w-64">
@@ -92,8 +92,8 @@ function ProductosPage() {
       </section>
 
       {/* Products Grid */}
-      <section className="py-16 bg-surface">
-        <div className="max-w-7xl mx-auto px-8">
+      <section className="py-10 sm:py-16 bg-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
           {/* Results count */}
           <p className="text-sm text-on-surface-variant mb-8">
             Mostrando <span className="font-bold text-on-surface">{productosFiltrados.length}</span> producto{productosFiltrados.length !== 1 ? 's' : ''}
@@ -108,7 +108,7 @@ function ProductosPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {productosFiltrados.map(producto => (
               <div key={producto.id} className="bg-surface-container-lowest rounded-3xl overflow-hidden ambient-shadow inner-glow group">
-                <div className="relative h-64 overflow-hidden bg-white">
+                <div className="relative h-56 sm:h-64 overflow-hidden bg-white">
                   <img
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 p-4 cursor-pointer"
                     alt={`Tanque ${producto.modelo} Rotonac`}
@@ -126,7 +126,7 @@ function ProductosPage() {
                     {producto.badge}
                   </div>
                 </div>
-                <div className="p-8">
+                <div className="p-5 sm:p-8">
                   <h3 className="font-headline font-bold text-2xl text-on-surface mb-2">{producto.modelo}</h3>
                   <p className="text-sm text-on-surface-variant mb-6">{producto.descripcion}</p>
                   <div className="bg-surface-container-low rounded-xl p-4">
