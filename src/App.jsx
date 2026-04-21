@@ -5,7 +5,12 @@ import ProductosPage from './pages/ProductosPage';
 
 // ─── Landing Page Component ──────────────────────────────────────────
 function LandingPage() {
-  const sliderImages = ['/hero1.png', '/hero2.png', '/hero3.png'];
+  const sliderImages = [
+    { src: '/slider1.jpg', title: 'Logística Nacional', subtitle: 'Distribución', desc: 'Llegamos a cada rincón de Venezuela con eficiencia.' },
+    { src: '/slider2.jpg', title: 'Calidad Rotonac', subtitle: 'Resistencia', desc: 'Diseñados para soportar las condiciones más exigentes.' },
+    { src: '/slider3.jpg', title: 'Capacidad Industrial', subtitle: 'Grandes Volúmenes', desc: 'Soluciones robustas para el almacenamiento masivo.' },
+    { src: '/slider4.jpg', title: 'Sede Principal', subtitle: 'VIPLAS', desc: 'Tecnología de vanguardia en la fabricación de tanques.' }
+  ];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const touchStartX = React.useRef(0);
   const touchEndX = React.useRef(0);
@@ -91,12 +96,12 @@ function LandingPage() {
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
-              {sliderImages.map((src, idx) => (
+              {sliderImages.map((slide, idx) => (
                 <img
-                  key={src}
+                  key={slide.src}
                   className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ease-in-out ${currentImageIndex === idx ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-                  alt={`Tanque Industrial Rotonac ${idx + 1}`}
-                  src={src}
+                  alt={slide.title}
+                  src={slide.src}
                 />
               ))}
               {/* Slider Indicators */}
@@ -114,10 +119,16 @@ function LandingPage() {
               {/* Floating Glass Card */}
               <div className="absolute bottom-3 left-3 right-3 lg:bottom-8 lg:left-8 lg:right-8 glass-panel rounded-xl lg:rounded-2xl p-4 lg:p-6 inner-glow z-30">
                 <div className="flex justify-between items-center mb-1 lg:mb-2">
-                  <span className="font-headline font-bold text-base lg:text-lg text-on-surface">Serie Industrial X</span>
-                  <span className="bg-secondary-container text-on-secondary-container px-2.5 lg:px-3 py-1 rounded-full text-xs font-bold tracking-wider">10,000L</span>
+                  <span className="font-headline font-bold text-base lg:text-lg text-on-surface">
+                    {sliderImages[currentImageIndex].title}
+                  </span>
+                  <span className="bg-secondary-container text-on-secondary-container px-2.5 lg:px-3 py-1 rounded-full text-xs font-bold tracking-wider">
+                    {sliderImages[currentImageIndex].subtitle}
+                  </span>
                 </div>
-                <p className="text-xs lg:text-sm text-on-surface-variant font-medium">Construcción en polietileno de alta densidad.</p>
+                <p className="text-xs lg:text-sm text-on-surface-variant font-medium">
+                  {sliderImages[currentImageIndex].desc}
+                </p>
               </div>
             </div>
           </div>
