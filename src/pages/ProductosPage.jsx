@@ -62,7 +62,7 @@ function ProductosPage() {
             {/* Separador */}
             <div className="hidden sm:block h-6 w-px bg-surface-container-highest/50"></div>
             {/* Filtros de categoría */}
-            <div className="flex items-center gap-3 overflow-x-auto pb-1 scrollbar-hide">
+            <div className="flex items-center flex-wrap gap-2 sm:gap-3 pb-1">
               <button
                 onClick={() => setFiltroActivo('todos')}
                 className={`px-5 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all duration-300 ${
