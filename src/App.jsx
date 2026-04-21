@@ -9,7 +9,9 @@ function LandingPage() {
     { src: '/slider1.jpg', title: 'Logística Nacional', subtitle: 'Distribución', desc: 'Llegamos a cada rincón de Venezuela con eficiencia.' },
     { src: '/slider2.jpg', title: 'Calidad Rotonac', subtitle: 'Resistencia', desc: 'Diseñados para soportar las condiciones más exigentes.' },
     { src: '/slider3.jpg', title: 'Capacidad Industrial', subtitle: 'Grandes Volúmenes', desc: 'Soluciones robustas para el almacenamiento masivo.' },
-    { src: '/slider4.jpg', title: 'Sede Principal', subtitle: 'VIPLAS', desc: 'Tecnología de vanguardia en la fabricación de tanques.' }
+    { src: '/slider4.jpg', title: 'Sede Principal', subtitle: 'VIPLAS', desc: 'Tecnología de vanguardia en la fabricación de tanques.' },
+    { src: '/slider5.jpg', title: 'Aliados Estratégicos', subtitle: 'Puntos de Venta', desc: 'Presencia en las mejores ferreterías a nivel nacional.' },
+    { src: '/slider6.jpg', title: 'Atención Personalizada', subtitle: 'Excelencia', desc: 'Compromiso y profesionalismo en cada detalle de nuestro servicio.' }
   ];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const touchStartX = React.useRef(0);
