@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { categorias } from './data/productos';
 import ProductosPage from './pages/ProductosPage';
 
@@ -563,9 +563,19 @@ function ScrollToTopButton() {
   );
 }
 
+// ─── Scroll Restoration on Route Change ────────────────────────────────
+function ScrollRestoration() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   return (
     <BrowserRouter>
+      <ScrollRestoration />
       <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
