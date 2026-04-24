@@ -502,7 +502,7 @@ function Footer() {
             </a>
             <div className="flex items-start gap-3">
               <span className="material-symbols-outlined text-lg translate-y-0.5">call</span>
-              <span className="leading-relaxed">Móvil: 0414-3182581<br />Móvil: +58 414-4436607</span>
+              <span className="leading-relaxed">Móvil: +414-3182581<br />Móvil: +58 414-4436607</span>
             </div>
             <div className="flex items-start gap-3">
               <span className="material-symbols-outlined text-lg translate-y-0.5">badge</span>
