@@ -43,7 +43,7 @@ function LandingPage() {
     e.preventDefault();
     const { nombre, email, interes, mensaje } = formData;
     if (!nombre.trim() || !mensaje.trim()) return;
-    
+
     setFormStatus({ loading: true, success: false, error: null });
 
     try {
@@ -59,11 +59,11 @@ function LandingPage() {
       setFormStatus({ loading: false, success: true, error: null });
 
       // 2. Preparar WhatsApp
-      const phoneNumber = "584144436607"; 
+      const phoneNumber = "584144436607";
       const interesLabel = interes ? `Estoy interesado en: ${interes}` : 'Consulta General';
       const text = `Hola Rotonac, mi nombre es ${nombre}.%0A%0A${interesLabel}%0A%0A${mensaje}%0A%0A(Mi correo es: ${email})`;
       const waUrl = `https://wa.me/${phoneNumber}?text=${text}`;
-      
+
       // Abrir WhatsApp después de un breve delay
       setTimeout(() => {
         window.open(waUrl, "_blank");
@@ -158,7 +158,7 @@ function LandingPage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>shield</span>
-                <span className="text-xs lg:text-sm font-medium text-on-surface-variant">10 Años de Garantía</span>
+                <span className="text-xs lg:text-sm font-medium text-on-surface-variant">8 Años de Garantía</span>
               </div>
             </div>
           </div>
@@ -270,7 +270,7 @@ function LandingPage() {
                   </div>
                   <div>
                     <h4 className="font-headline font-bold text-on-surface text-lg">Sede Principal</h4>
-                    <a 
+                    <a
                       href="https://www.google.com/maps/place/Rotonac+C.A./@10.2215452,-67.3337934,18.75z/data=!4m18!1m11!4m10!1m2!1m1!2sZona+Industrial+Soco+Prolongacion+Av+Inter-Industrial+Galpon+1!1m6!1m2!1s0x8c2a9e634574d085:0x8e12163158540335!2sLa+Victoria,+2121,+Aragua!2m2!1d-67.326501!2d10.218625!3m5!1s0x8c2a9ffa15159e0d:0x4de1f3c01c9ca56e!8m2!3d10.2215566!4d-67.3332265!16s%2Fg%2F11frb5fx66?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -297,16 +297,16 @@ function LandingPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="ghost-border pb-2 group">
                     <label className="block text-xs font-semibold text-on-surface-variant mb-2 uppercase tracking-wider group-focus-within:text-secondary transition-colors">Nombre Completo</label>
-                    <input required value={formData.nombre} onChange={(e) => setFormData({...formData, nombre: e.target.value})} className="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0 text-sm" placeholder="Juan Pérez" type="text" />
+                    <input required value={formData.nombre} onChange={(e) => setFormData({ ...formData, nombre: e.target.value })} className="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0 text-sm" placeholder="Juan Pérez" type="text" />
                   </div>
                   <div className="ghost-border pb-2 group">
                     <label className="block text-xs font-semibold text-on-surface-variant mb-2 uppercase tracking-wider group-focus-within:text-secondary transition-colors">Correo Electrónico</label>
-                    <input required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0 text-sm" placeholder="juan@empresa.com" type="email" />
+                    <input required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0 text-sm" placeholder="juan@empresa.com" type="email" />
                   </div>
                 </div>
                 <div className="ghost-border pb-2 group">
                   <label className="block text-xs font-semibold text-on-surface-variant mb-2 uppercase tracking-wider group-focus-within:text-secondary transition-colors">Estoy Interesado En</label>
-                  <select required value={formData.interes} onChange={(e) => setFormData({...formData, interes: e.target.value})} className="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0 text-sm cursor-pointer appearance-none">
+                  <select required value={formData.interes} onChange={(e) => setFormData({ ...formData, interes: e.target.value })} className="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0 text-sm cursor-pointer appearance-none">
                     <option disabled value="">Selecciona una opción</option>
                     <option value="Tanques Residenciales (Mono / Doble / Triple Capa)">Tanques Residenciales</option>
                     <option value="Almacenamiento Industrial y Tambores">Almacenamiento Industrial</option>
@@ -317,16 +317,16 @@ function LandingPage() {
                 </div>
                 <div className="ghost-border pb-2 group">
                   <label className="block text-xs font-semibold text-on-surface-variant mb-2 uppercase tracking-wider group-focus-within:text-secondary transition-colors">Mensaje</label>
-                  <textarea required value={formData.mensaje} onChange={(e) => setFormData({...formData, mensaje: e.target.value})} className="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0 text-sm resize-none" placeholder="Detalles o especificaciones del proyecto..." rows={3}></textarea>
+                  <textarea required value={formData.mensaje} onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })} className="w-full bg-transparent border-none p-0 text-on-surface focus:ring-0 text-sm resize-none" placeholder="Detalles o especificaciones del proyecto..." rows={3}></textarea>
                 </div>
-                <button 
+                <button
                   disabled={formStatus.loading}
-                  className={`w-full text-white py-4 rounded-xl font-bold text-sm hover:scale-[1.02] hover:shadow-lg transition-all duration-300 mt-4 flex items-center justify-center gap-2 ${formStatus.loading ? 'bg-slate-400' : 'bg-[#D93025] shadow-sm'}`} 
+                  className={`w-full text-white py-4 rounded-xl font-bold text-sm hover:scale-[1.02] hover:shadow-lg transition-all duration-300 mt-4 flex items-center justify-center gap-2 ${formStatus.loading ? 'bg-slate-400' : 'bg-[#D93025] shadow-sm'}`}
                   type="submit"
                 >
                   {formStatus.loading ? (
                     <span className="flex items-center gap-2">
-                       <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
@@ -400,19 +400,17 @@ function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`md:hidden fixed inset-0 top-[72px] bg-black/40 backdrop-blur-sm z-40 transition-opacity duration-300 ${
-          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`md:hidden fixed inset-0 top-[72px] bg-black/40 backdrop-blur-sm z-40 transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
         onClick={() => setMobileMenuOpen(false)}
       />
 
       {/* Mobile Menu Panel */}
       <div
-        className={`md:hidden fixed top-[72px] left-0 right-0 bg-white/95 backdrop-blur-xl z-50 shadow-xl transition-all duration-300 ease-out ${
-          mobileMenuOpen
+        className={`md:hidden fixed top-[72px] left-0 right-0 bg-white/95 backdrop-blur-xl z-50 shadow-xl transition-all duration-300 ease-out ${mobileMenuOpen
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 -translate-y-4 pointer-events-none'
-        }`}
+          }`}
       >
         <div className="flex flex-col px-6 py-6 space-y-1">
           <Link
@@ -491,7 +489,7 @@ function Footer() {
         <div className="flex flex-col xl:col-span-1">
           <h4 className="font-headline font-bold text-lg mb-6">Información de Contacto</h4>
           <div className="flex flex-col space-y-4 font-inter text-sm text-secondary-fixed-dim">
-            <a 
+            <a
               href="https://www.google.com/maps/place/Rotonac+C.A./@10.2215452,-67.3337934,18.75z/data=!4m18!1m11!4m10!1m2!1m1!2sZona+Industrial+Soco+Prolongacion+Av+Inter-Industrial+Galpon+1!1m6!1m2!1s0x8c2a9e634574d085:0x8e12163158540335!2sLa+Victoria,+2121,+Aragua!2m2!1d-67.326501!2d10.218625!3m5!1s0x8c2a9ffa15159e0d:0x4de1f3c01c9ca56e!8m2!3d10.2215566!4d-67.3332265!16s%2Fg%2F11frb5fx66?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
@@ -578,9 +576,8 @@ function ScrollToTopButton() {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-32 right-6 z-[90] bg-primary text-on-primary w-12 h-12 rounded-xl shadow-lg flex items-center justify-center hover:bg-primary/90 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 ${
-        isVisible ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-10 pointer-events-none"
-      }`}
+      className={`fixed bottom-32 right-6 z-[90] bg-primary text-on-primary w-12 h-12 rounded-xl shadow-lg flex items-center justify-center hover:bg-primary/90 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 ${isVisible ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-10 pointer-events-none"
+        }`}
       aria-label="Volver arriba"
     >
       <span className="material-symbols-outlined font-bold text-2xl">expand_less</span>
@@ -609,9 +606,9 @@ function App() {
       <Footer />
       <ScrollToTopButton />
       {/* Botón Flotante Global WhatsApp */}
-      <a 
-        href="https://wa.me/584144436607?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web,%20necesito%20m%C3%A1s%20informaci%C3%B3n%20acerca%20de%20los%20productos%20que%20venden." 
-        target="_blank" 
+      <a
+        href="https://wa.me/584144436607?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web,%20necesito%20m%C3%A1s%20informaci%C3%B3n%20acerca%20de%20los%20productos%20que%20venden."
+        target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-[100] bg-[#25D366] text-white p-3.5 rounded-full shadow-xl hover:-translate-y-1 hover:shadow-2xl hover:bg-[#20bd5a] transition-all duration-300 flex items-center justify-center animate-[bounce_3s_infinite]"
         title="Contáctanos por WhatsApp"
