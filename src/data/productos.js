@@ -576,7 +576,7 @@ export const productos = [
     tecnologia: 'Capa interna antibacterial',
   },
 
-  // ─── TAMBORES ───────────────────────────────────────────────────────
+  // ─── TAMBORES ───────────
   {
     id: 'tambor-208-abierta',
     categoria: 'tambores',
