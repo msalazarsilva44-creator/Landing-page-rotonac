@@ -503,24 +503,7 @@ export const productos = [
     ],
     tecnologia: 'Triple Capa',
   },
-  {
-    id: 'vip-1100-tc',
-    categoria: 'triple-capa',
-    badge: 'VIP',
-    badgeColor: 'primary',
-    modelo: 'VIP 1100 (Triple Capa)',
-    descripcion: 'Máxima protección térmica y estructural con diseño de base ancha.',
-    imagen: '/categorias/australiano-2000-tc.png',
-    specs: [
-      { label: 'Código', value: 'VP-1100-TC' },
-      { label: 'Capacidad Total', value: '1100 L' },
-      { label: 'Alto', value: '136 cm' },
-      { label: 'Diámetro Sup.', value: '58 cm' },
-      { label: 'Diámetro Inf.', value: '105 cm' },
-      { label: 'Material', value: 'Polietileno Triple Capa (100% materia prima virgen importada)' },
-    ],
-    tecnologia: 'Capa interna antibacterial',
-  },
+
   {
     id: 'australiano-2250-tc',
     categoria: 'triple-capa',
