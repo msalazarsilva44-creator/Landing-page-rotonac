@@ -420,7 +420,7 @@ export const productos = [
     badgeColor: 'primary',
     modelo: 'VIP 1100 (Doble Capa)',
     descripcion: 'Diseño de base ancha con tecnología de doble capa y protección antibacterial.',
-    imagen: '/categorias/australiano-2000-dc.png',
+    imagen: '/categorias/vip-1100-dc.png',
     specs: [
       { label: 'Código', value: 'VP-1100-DC' },
       { label: 'Capacidad Total', value: '1100 L' },
