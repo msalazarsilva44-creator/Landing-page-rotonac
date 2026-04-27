@@ -456,7 +456,7 @@ export const productos = [
     badgeColor: 'secondary',
     modelo: 'Tinaco tipo Australiano 2.250 (Doble capa)',
     descripcion: 'Alta capacidad con doble capa protectora y hombros de reforzamiento.',
-    imagen: '/categorias/australiano-3400-dc.png',
+    imagen: '/categorias/australiano-2250-dc.png',
     specs: [
       { label: 'Código', value: 'TA-2250-DC' },
       { label: 'Capacidad Total', value: '2250 L' },
@@ -466,6 +466,24 @@ export const productos = [
       { label: 'Material', value: 'Polietileno Doble Capa (100% materia prima virgen importada)' },
     ],
     tecnologia: 'Capa interna antibacterial',
+  },
+  {
+    id: 'australiano-3400-dc',
+    categoria: 'doble-capa',
+    badge: 'AUSTRALIANO',
+    badgeColor: 'secondary',
+    modelo: 'Tinaco tipo Australiano 3.400 (Doble capa)',
+    descripcion: 'Diseño robusto con 7 anillos de reforzamiento y 2 hombros para interconexiones.',
+    imagen: '/categorias/australiano-3400-dc.png',
+    specs: [
+      { label: 'Código', value: 'TA-3400-DC' },
+      { label: 'Capacidad Total', value: '3400 L' },
+      { label: 'Alto', value: '194 cm' },
+      { label: 'Diámetro Tapa', value: '48 cm' },
+      { label: 'Diámetro Cuerpo', value: '150 cm' },
+      { label: 'Material', value: 'Polietileno Doble Capa (100% materia prima virgen importada)' },
+    ],
+    tecnologia: 'Hombros de Reforzamiento',
   },
   {
     id: 'australiano-5500-dc',
