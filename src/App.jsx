@@ -175,10 +175,10 @@ function LandingPage() {
               <h2 className="font-headline font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight">Quiénes Somos</h2>
               <div className="w-16 h-1 bg-gradient-primary rounded-full mb-8"></div>
               <p className="font-body text-base text-on-surface-variant leading-relaxed">
-                En Rotonac, transcendemos la manufactura tradicional. Somos arquitectos de la contención de fluidos. Con más de dos décadas de experiencia en ingeniería de rotomoldeo, proveemos soluciones estructurales en las que las industrias confían para una seguridad y longevidad absolutas.
+                En Rotonac, transcendemos la manufactura tradicional. Somos arquitectos de la contención de fluidos y nos enorgullece ser la <strong>única empresa en Venezuela</strong> que fabrica sus tanques utilizando exclusivamente <strong>100% materia prima virgen importada</strong>.
               </p>
               <p className="font-body text-base text-on-surface-variant leading-relaxed">
-                Nuestro proceso asegura contenedores sin costuras y libres de tensión, capaces de soportar condiciones ambientales extremas, asegurando que tus recursos se preserven con una integridad inquebrantable.
+                Con más de dos décadas de experiencia en ingeniería de rotomoldeo, nuestro proceso asegura contenedores sin costuras y libres de tensión, capaces de soportar las condiciones ambientales más extremas, garantizando que tus recursos se preserven con una integridad inquebrantable.
               </p>
             </div>
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
