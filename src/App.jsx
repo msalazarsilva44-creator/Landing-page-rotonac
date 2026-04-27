@@ -178,7 +178,7 @@ function LandingPage() {
                 En Rotonac, transcendemos la manufactura tradicional. Somos arquitectos de la contención de fluidos y nos enorgullece ser la <strong>única empresa en Venezuela</strong> que fabrica sus tanques utilizando exclusivamente <strong>100% materia prima virgen importada</strong>.
               </p>
               <p className="font-body text-base text-on-surface-variant leading-relaxed">
-                Con más de dos décadas de experiencia en ingeniería de rotomoldeo, nuestro proceso asegura contenedores sin costuras y libres de tensión, capaces de soportar las condiciones ambientales más extremas, garantizando que tus recursos se preserven con una integridad inquebrantable.
+                Con más de dos décadas de experiencia en ingeniería de rotomoldeo, nuestro proceso asegura contenedores sin costuras y libres de tensión, capaces de soportar las condiciones ambientales más extremas. Esta superioridad técnica nos permite ofrecer una <strong>garantía de 8 años</strong>, asegurando que tus recursos se preserven con una integridad inquebrantable.
               </p>
             </div>
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
