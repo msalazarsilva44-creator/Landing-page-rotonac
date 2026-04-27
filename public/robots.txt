@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tu-dominio-vercel.vercel.app/sitemap.xml
+Sitemap: https://www.rotonac.com/sitemap.xml
