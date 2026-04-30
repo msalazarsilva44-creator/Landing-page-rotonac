@@ -181,27 +181,81 @@ function LandingPage() {
                 Con más de dos décadas de experiencia en ingeniería de rotomoldeo, nuestro proceso asegura contenedores sin costuras y libres de tensión, capaces de soportar las condiciones ambientales más extremas. Esta superioridad técnica nos permite ofrecer una <strong>garantía de 8 años</strong>, asegurando que tus recursos se preserven con una integridad inquebrantable.
               </p>
             </div>
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {/* Mission Card */}
-              <div className="bg-surface-container-lowest rounded-3xl p-8 ambient-shadow inner-glow flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                  <span className="material-symbols-outlined text-primary text-2xl">target</span>
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+              {/* ── Misión Card ── */}
+              <div
+                className="flex flex-col h-full rounded-[16px] p-8 transition-transform duration-300 hover:-translate-y-1"
+                style={{
+                  background: 'linear-gradient(145deg, #E6F1FB 0%, #ffffff 100%)',
+                  border: '1.5px solid #C2D9F0',
+                }}
+              >
+                {/* Icon container */}
+                <div
+                  className="w-11 h-11 flex items-center justify-center rounded-xl mb-6 flex-shrink-0"
+                  style={{
+                    background: '#ffffff',
+                    border: '1.5px solid #C2D9F0',
+                  }}
+                >
+                  {/* Bullseye / Target SVG — blue */}
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9.5" stroke="#378ADD" strokeWidth="1.8"/>
+                    <circle cx="12" cy="12" r="5.5" stroke="#378ADD" strokeWidth="1.8"/>
+                    <circle cx="12" cy="12" r="1.8" fill="#378ADD"/>
+                  </svg>
                 </div>
-                <h3 className="font-headline font-bold text-xl text-on-surface mb-4">Misión</h3>
-                <p className="font-body text-sm text-on-surface-variant leading-relaxed mt-auto">
+                <h3
+                  className="font-headline font-bold text-xl mb-3"
+                  style={{ color: '#1a2a3a' }}
+                >
+                  Misión
+                </h3>
+                <p
+                  className="font-body text-sm leading-relaxed"
+                  style={{ color: '#5a6a7a' }}
+                >
                   Diseñar los sistemas de almacenamiento de fluidos más confiables y estructuralmente sólidos mediante tecnología de polímeros innovadora y procesos de manufactura de precisión.
                 </p>
               </div>
-              {/* Vision Card */}
-              <div className="bg-surface-container-lowest rounded-3xl p-8 ambient-shadow inner-glow flex flex-col h-full hover:-translate-y-1 transition-transform duration-300">
-                <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-6">
-                  <span className="material-symbols-outlined text-secondary text-2xl">visibility</span>
+
+              {/* ── Visión Card ── */}
+              <div
+                className="flex flex-col h-full rounded-[16px] p-8 transition-transform duration-300 hover:-translate-y-1"
+                style={{
+                  background: 'linear-gradient(145deg, #E1F5EE 0%, #ffffff 100%)',
+                  border: '1.5px solid #A8DECA',
+                }}
+              >
+                {/* Icon container */}
+                <div
+                  className="w-11 h-11 flex items-center justify-center rounded-xl mb-6 flex-shrink-0"
+                  style={{
+                    background: '#ffffff',
+                    border: '1.5px solid #A8DECA',
+                  }}
+                >
+                  {/* Eye SVG — green */}
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M1 12C1 12 5 5 12 5C19 5 23 12 23 12C23 12 19 19 12 19C5 19 1 12 1 12Z" stroke="#1D9E75" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="12" cy="12" r="3" stroke="#1D9E75" strokeWidth="1.8"/>
+                  </svg>
                 </div>
-                <h3 className="font-headline font-bold text-xl text-on-surface mb-4">Visión</h3>
-                <p className="font-body text-sm text-on-surface-variant leading-relaxed mt-auto">
+                <h3
+                  className="font-headline font-bold text-xl mb-3"
+                  style={{ color: '#0f2a1e' }}
+                >
+                  Visión
+                </h3>
+                <p
+                  className="font-body text-sm leading-relaxed"
+                  style={{ color: '#4a6a5a' }}
+                >
                   Establecer el estándar arquitectónico global para la contención de fluidos industrial y residencial, asegurando la gestión sustentable de los recursos para las futuras generaciones.
                 </p>
               </div>
+
             </div>
           </div>
         </div>
