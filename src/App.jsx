@@ -553,8 +553,12 @@ function Footer() {
               <span className="leading-relaxed underline-offset-2 group-hover:underline">Zona Industrial Soco, Prolongación Av. Inter-Industrial Galpón 1-A,<br />La Victoria, Edo. Aragua</span>
             </a>
             <div className="flex items-start gap-3">
-              <span className="material-symbols-outlined text-lg translate-y-0.5">call</span>
-              <span className="leading-relaxed">Móvil: +58 414-4436607</span>
+              <span className="material-symbols-outlined text-lg translate-y-0.5 mt-0.5">call</span>
+              <div className="flex flex-col gap-1 leading-relaxed">
+                <a href="tel:+584144436607" className="hover:text-on-secondary transition-colors">+58 414-4436607</a>
+                <a href="tel:+584128642585" className="hover:text-on-secondary transition-colors">+58 412-8642585</a>
+                <a href="tel:+584160110479" className="hover:text-on-secondary transition-colors">+58 416-0110479</a>
+              </div>
             </div>
             <div className="flex items-start gap-3">
               <span className="material-symbols-outlined text-lg translate-y-0.5">badge</span>
